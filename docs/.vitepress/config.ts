@@ -11,11 +11,12 @@ module.exports = {
     nav: nav(),
 
     sidebar: {
-      "/intro/": sidebarIntro(),
-      "/syntax/": sidebarSyntax(),
-      "/config": sidebarConfig(),
-      "/misc/": sidebarMisc(),
-      "/community/": sidebarCommunity(),
+      "/": sidebarAll(),
+      // "/intro/": sidebarIntro(),
+      // "/syntax/": sidebarSyntax(),
+      // "/config": sidebarConfig(),
+      // "/misc/": sidebarMisc(),
+      // "/community/": sidebarCommunity(),
     },
   },
 };
@@ -51,7 +52,7 @@ function nav() {
   ];
 }
 
-function sidebarIntro() {
+function sidebarAll() {
   return [
     {
       text: "📔 Introduction",
