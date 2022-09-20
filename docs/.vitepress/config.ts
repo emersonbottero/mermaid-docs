@@ -5,7 +5,7 @@ module.exports = {
   lang: "en-US",
   title: "Mermaid",
   description: "Create diagrams and visualizations using text and code.",
-  base: "/mermaid/",
+  base: "/mermaid-docs/",
   markdown: MermaidMarkdown,
   themeConfig: {
     nav: nav(),
