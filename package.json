@@ -1,0 +1,19 @@
+{
+  "name": "mermaid-docs",
+  "version": "9.2.0-rc1",
+  "main": "index.js",
+  "repository": "https://github.com/emersonbottero/mermaid-docs.git",
+  "author": "Emerson Bottero <emersonbottero@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "dependencies": {
+    "mermaid": "^9.1.7",
+    "vitepress": "^1.0.0-alpha.15",
+    "vitepress-plugin-mermaid": "^2.0.6",
+    "vitepress-plugin-search": "^1.0.4-alpha.7"
+  }
+}
