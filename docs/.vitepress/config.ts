@@ -49,6 +49,10 @@ function nav() {
         },
       ],
     },
+    {
+      text: "💻 Live Editor",
+      link: "/edit",
+    },
   ];
 }
 
@@ -137,7 +141,7 @@ function sidebarCommunity() {
       text: "🙌 Contributions and Community",
       collapsible: true,
       items: [
-        { text: "Overview for Beginners", link: "/community/nOOb-overview" },
+        { text: "Overview for Beginners", link: "/community/n00b-overview" },
         {
           text: "Development and Contribution",
           link: "/community/development",
