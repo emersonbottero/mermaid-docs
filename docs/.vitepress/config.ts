@@ -1,3 +1,4 @@
+import { text } from "d3";
 import { version } from "../../package.json";
 import MermaidMarkdown from "./mermaid-markdown-all";
 
@@ -50,6 +51,10 @@ function nav() {
       ],
     },
     {
+      text: "modules",
+      link: "code/modules",
+    },
+    {
       text: "💻 Live Editor",
       link: "/edit",
     },
@@ -74,6 +79,10 @@ function sidebarAll() {
     ...sidebarConfig(),
     ...sidebarMisc(),
     ...sidebarCommunity(),
+    {
+      text: "Generated",
+      items: [{ text: "modules", link: "docs/code/modules" }],
+    },
   ];
 }
 
