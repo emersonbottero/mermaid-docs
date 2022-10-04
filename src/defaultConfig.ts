@@ -1,5 +1,5 @@
-import theme from './themes';
-import { MermaidConfig } from './config.type';
+import theme from "./themes";
+import { MermaidConfig } from "./config.type";
 /**
  * **Configuration methods in Mermaid version 8.6.0 have been updated, to learn more[[click
  * here](8.6.0_docs.md)].**
@@ -8,14 +8,20 @@ import { MermaidConfig } from './config.type';
  *
  * These are the default options which can be overridden with the initialization call like so:
  *
- * **Example 1:**<pre> mermaid.initialize({ flowchart:{ htmlLabels: false } }); </pre>
+ * **Example 1:**
+ * ```js
+ *  mermaid.initialize({ flowchart:{ htmlLabels: false } });
+ * ```
  *
- * **Example 2:**<pre> <script> var config = { startOnLoad:true, flowchart:{ useMaxWidth:true,
+ * **Example 2:**
+ * ```js
+ *  var config = { startOnLoad:true, flowchart:{ useMaxWidth:true,
  * htmlLabels:true, curve:'cardinal', },
  *
  *     securityLevel:'loose',
  *
- * }; mermaid.initialize(config); </script> </pre>
+ * }; mermaid.initialize(config);
+ * ```
  *
  * A summary of all options and their defaults is found [here](#mermaidapi-configuration-defaults).
  * A description of each option follows below.
@@ -33,8 +39,8 @@ const config: Partial<MermaidConfig> = {
    * **Notes:** To disable any pre-defined mermaid theme, use "null".<pre> "theme": "forest",
    * "themeCSS": ".node rect { fill: red; }" </pre>
    */
-  theme: 'default',
-  themeVariables: theme['default'].getThemeVariables(),
+  theme: "default",
+  themeVariables: theme["default"].getThemeVariables(),
   themeCSS: undefined,
   /* **maxTextSize** - The maximum allowed size of the users text diagram */
   maxTextSize: 50000,
@@ -80,7 +86,7 @@ const config: Partial<MermaidConfig> = {
    *   prevent any JavaScript from running in the context. This may hinder interactive functionality
    *   of the diagram like scripts, popups in sequence diagram or links to other tabs/targets etc.
    */
-  securityLevel: 'strict',
+  securityLevel: "strict",
 
   /**
    * | Parameter   | Description                                  | Type    | Required | Values      |
@@ -114,7 +120,7 @@ const config: Partial<MermaidConfig> = {
    *
    * Default value: ['secure', 'securityLevel', 'startOnLoad', 'maxTextSize']
    */
-  secure: ['secure', 'securityLevel', 'startOnLoad', 'maxTextSize'],
+  secure: ["secure", "securityLevel", "startOnLoad", "maxTextSize"],
 
   /**
    * This option controls if the generated ids of nodes in the SVG are generated randomly or based
@@ -199,7 +205,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default Value: 'basis'
      */
-    curve: 'basis',
+    curve: "basis",
     // Only used in new experimental rendering
     // represents the padding between the labels and the shape
     padding: 15,
@@ -230,7 +236,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default value: 'dagre-wrapper'
      */
-    defaultRenderer: 'dagre-wrapper',
+    defaultRenderer: "dagre-wrapper",
   },
 
   /** The object containing configurations specific for sequence diagrams */
@@ -333,7 +339,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: 'center'
      */
-    messageAlign: 'center',
+    messageAlign: "center",
 
     /**
      * | Parameter    | Description                 | Type    | Required | Values      |
@@ -460,7 +466,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: 'center'
      */
-    noteAlign: 'center',
+    noteAlign: "center",
 
     /**
      * | Parameter       | Description                               | Type    | Required | Values              |
@@ -643,7 +649,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default value: '%Y-%m-%d'.
      */
-    axisFormat: '%Y-%m-%d',
+    axisFormat: "%Y-%m-%d",
 
     /**
      * | Parameter   | Description | Type    | Required | Values      |
@@ -767,7 +773,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: 'center'
      */
-    messageAlign: 'center',
+    messageAlign: "center",
 
     /**
      * | Parameter       | Description                                | Type    | Required | Values             |
@@ -816,11 +822,26 @@ const config: Partial<MermaidConfig> = {
     activationWidth: 10,
 
     // text placement as: tspan | fo | old only text as before
-    textPlacement: 'fo',
-    actorColours: ['#8FBC8F', '#7CFC00', '#00FFFF', '#20B2AA', '#B0E0E6', '#FFFFE0'],
+    textPlacement: "fo",
+    actorColours: [
+      "#8FBC8F",
+      "#7CFC00",
+      "#00FFFF",
+      "#20B2AA",
+      "#B0E0E6",
+      "#FFFFE0",
+    ],
 
-    sectionFills: ['#191970', '#8B008B', '#4B0082', '#2F4F4F', '#800000', '#8B4513', '#00008B'],
-    sectionColours: ['#fff'],
+    sectionFills: [
+      "#191970",
+      "#8B008B",
+      "#4B0082",
+      "#2F4F4F",
+      "#800000",
+      "#8B4513",
+      "#00008B",
+    ],
+    sectionColours: ["#fff"],
   },
   class: {
     arrowMarkerAbsolute: false,
@@ -853,7 +874,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default value: 'dagre-d3'
      */
-    defaultRenderer: 'dagre-wrapper',
+    defaultRenderer: "dagre-wrapper",
   },
   state: {
     dividerMargin: 10,
@@ -871,7 +892,7 @@ const config: Partial<MermaidConfig> = {
     fontSizeFactor: 5.02,
     fontSize: 24,
     labelHeight: 16,
-    edgeLengthFactor: '20',
+    edgeLengthFactor: "20",
     compositTitleSize: 35,
     radius: 5,
     /**
@@ -899,7 +920,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default value: 'dagre-d3'
      */
-    defaultRenderer: 'dagre-wrapper',
+    defaultRenderer: "dagre-wrapper",
   },
 
   /** The object containing configurations specific for entity relationship diagrams */
@@ -931,7 +952,7 @@ const config: Partial<MermaidConfig> = {
      *
      * Default value: 'TB'
      */
-    layoutDirection: 'TB',
+    layoutDirection: "TB",
 
     /**
      * | Parameter      | Description                        | Type    | Required | Values             |
@@ -972,7 +993,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: 'gray'
      */
-    stroke: 'gray',
+    stroke: "gray",
 
     /**
      * | Parameter | Description                | Type   | Required | Values               |
@@ -981,7 +1002,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: 'honeydew'
      */
-    fill: 'honeydew',
+    fill: "honeydew",
 
     /**
      * | Parameter | Description         | Type    | Required | Values             |
@@ -1046,10 +1067,10 @@ const config: Partial<MermaidConfig> = {
      */
     useMaxWidth: true,
 
-    rect_fill: '#f9f9f9',
-    text_color: '#333',
-    rect_border_size: '0.5px',
-    rect_border_color: '#bbb',
+    rect_fill: "#f9f9f9",
+    text_color: "#333",
+    rect_border_size: "0.5px",
+    rect_border_color: "#bbb",
     rect_min_width: 200,
     rect_min_height: 200,
     fontSize: 14,
@@ -1064,7 +1085,7 @@ const config: Partial<MermaidConfig> = {
       x: -25,
       y: 0,
     },
-    mainBranchName: 'main',
+    mainBranchName: "main",
     mainBranchOrder: 0,
     showCommitLabel: true,
     showBranches: true,
@@ -1191,7 +1212,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    personFontWeight: 'normal',
+    personFontWeight: "normal",
 
     /**
      * This sets the font size of External Person shape for the diagram
@@ -1210,7 +1231,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_personFontWeight: 'normal',
+    external_personFontWeight: "normal",
 
     /**
      * This sets the font size of System shape for the diagram
@@ -1229,7 +1250,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    systemFontWeight: 'normal',
+    systemFontWeight: "normal",
 
     /**
      * This sets the font size of External System shape for the diagram
@@ -1248,7 +1269,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_systemFontWeight: 'normal',
+    external_systemFontWeight: "normal",
 
     /**
      * This sets the font size of System DB shape for the diagram
@@ -1267,7 +1288,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    system_dbFontWeight: 'normal',
+    system_dbFontWeight: "normal",
 
     /**
      * This sets the font size of External System DB shape for the diagram
@@ -1286,7 +1307,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_system_dbFontWeight: 'normal',
+    external_system_dbFontWeight: "normal",
 
     /**
      * This sets the font size of System Queue shape for the diagram
@@ -1305,7 +1326,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    system_queueFontWeight: 'normal',
+    system_queueFontWeight: "normal",
 
     /**
      * This sets the font size of External System Queue shape for the diagram
@@ -1324,7 +1345,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_system_queueFontWeight: 'normal',
+    external_system_queueFontWeight: "normal",
 
     /**
      * This sets the font size of Boundary shape for the diagram
@@ -1343,7 +1364,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    boundaryFontWeight: 'normal',
+    boundaryFontWeight: "normal",
 
     /**
      * This sets the font size of Message shape for the diagram
@@ -1362,7 +1383,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    messageFontWeight: 'normal',
+    messageFontWeight: "normal",
 
     /**
      * This sets the font size of Container shape for the diagram
@@ -1381,7 +1402,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    containerFontWeight: 'normal',
+    containerFontWeight: "normal",
 
     /**
      * This sets the font size of External Container shape for the diagram
@@ -1400,7 +1421,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_containerFontWeight: 'normal',
+    external_containerFontWeight: "normal",
 
     /**
      * This sets the font size of Container DB shape for the diagram
@@ -1419,7 +1440,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    container_dbFontWeight: 'normal',
+    container_dbFontWeight: "normal",
 
     /**
      * This sets the font size of External Container DB shape for the diagram
@@ -1438,7 +1459,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_container_dbFontWeight: 'normal',
+    external_container_dbFontWeight: "normal",
 
     /**
      * This sets the font size of Container Queue shape for the diagram
@@ -1457,7 +1478,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    container_queueFontWeight: 'normal',
+    container_queueFontWeight: "normal",
 
     /**
      * This sets the font size of External Container Queue shape for the diagram
@@ -1476,7 +1497,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_container_queueFontWeight: 'normal',
+    external_container_queueFontWeight: "normal",
 
     /**
      * This sets the font size of Component shape for the diagram
@@ -1495,7 +1516,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    componentFontWeight: 'normal',
+    componentFontWeight: "normal",
 
     /**
      * This sets the font size of External Component shape for the diagram
@@ -1514,7 +1535,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_componentFontWeight: 'normal',
+    external_componentFontWeight: "normal",
 
     /**
      * This sets the font size of Component DB shape for the diagram
@@ -1533,7 +1554,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    component_dbFontWeight: 'normal',
+    component_dbFontWeight: "normal",
 
     /**
      * This sets the font size of External Component DB shape for the diagram
@@ -1552,7 +1573,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_component_dbFontWeight: 'normal',
+    external_component_dbFontWeight: "normal",
 
     /**
      * This sets the font size of Component Queue shape for the diagram
@@ -1571,7 +1592,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    component_queueFontWeight: 'normal',
+    component_queueFontWeight: "normal",
 
     /**
      * This sets the font size of External Component Queue shape for the diagram
@@ -1590,7 +1611,7 @@ const config: Partial<MermaidConfig> = {
      *
      * **Notes:** Default value: normal.
      */
-    external_component_queueFontWeight: 'normal',
+    external_component_queueFontWeight: "normal",
 
     /**
      * This sets the auto-wrap state for the diagram
@@ -1784,46 +1805,46 @@ const config: Partial<MermaidConfig> = {
 
     // ' Colors
     // ' ##################################
-    person_bg_color: '#08427B',
-    person_border_color: '#073B6F',
-    external_person_bg_color: '#686868',
-    external_person_border_color: '#8A8A8A',
-    system_bg_color: '#1168BD',
-    system_border_color: '#3C7FC0',
-    system_db_bg_color: '#1168BD',
-    system_db_border_color: '#3C7FC0',
-    system_queue_bg_color: '#1168BD',
-    system_queue_border_color: '#3C7FC0',
-    external_system_bg_color: '#999999',
-    external_system_border_color: '#8A8A8A',
-    external_system_db_bg_color: '#999999',
-    external_system_db_border_color: '#8A8A8A',
-    external_system_queue_bg_color: '#999999',
-    external_system_queue_border_color: '#8A8A8A',
-    container_bg_color: '#438DD5',
-    container_border_color: '#3C7FC0',
-    container_db_bg_color: '#438DD5',
-    container_db_border_color: '#3C7FC0',
-    container_queue_bg_color: '#438DD5',
-    container_queue_border_color: '#3C7FC0',
-    external_container_bg_color: '#B3B3B3',
-    external_container_border_color: '#A6A6A6',
-    external_container_db_bg_color: '#B3B3B3',
-    external_container_db_border_color: '#A6A6A6',
-    external_container_queue_bg_color: '#B3B3B3',
-    external_container_queue_border_color: '#A6A6A6',
-    component_bg_color: '#85BBF0',
-    component_border_color: '#78A8D8',
-    component_db_bg_color: '#85BBF0',
-    component_db_border_color: '#78A8D8',
-    component_queue_bg_color: '#85BBF0',
-    component_queue_border_color: '#78A8D8',
-    external_component_bg_color: '#CCCCCC',
-    external_component_border_color: '#BFBFBF',
-    external_component_db_bg_color: '#CCCCCC',
-    external_component_db_border_color: '#BFBFBF',
-    external_component_queue_bg_color: '#CCCCCC',
-    external_component_queue_border_color: '#BFBFBF',
+    person_bg_color: "#08427B",
+    person_border_color: "#073B6F",
+    external_person_bg_color: "#686868",
+    external_person_border_color: "#8A8A8A",
+    system_bg_color: "#1168BD",
+    system_border_color: "#3C7FC0",
+    system_db_bg_color: "#1168BD",
+    system_db_border_color: "#3C7FC0",
+    system_queue_bg_color: "#1168BD",
+    system_queue_border_color: "#3C7FC0",
+    external_system_bg_color: "#999999",
+    external_system_border_color: "#8A8A8A",
+    external_system_db_bg_color: "#999999",
+    external_system_db_border_color: "#8A8A8A",
+    external_system_queue_bg_color: "#999999",
+    external_system_queue_border_color: "#8A8A8A",
+    container_bg_color: "#438DD5",
+    container_border_color: "#3C7FC0",
+    container_db_bg_color: "#438DD5",
+    container_db_border_color: "#3C7FC0",
+    container_queue_bg_color: "#438DD5",
+    container_queue_border_color: "#3C7FC0",
+    external_container_bg_color: "#B3B3B3",
+    external_container_border_color: "#A6A6A6",
+    external_container_db_bg_color: "#B3B3B3",
+    external_container_db_border_color: "#A6A6A6",
+    external_container_queue_bg_color: "#B3B3B3",
+    external_container_queue_border_color: "#A6A6A6",
+    component_bg_color: "#85BBF0",
+    component_border_color: "#78A8D8",
+    component_db_bg_color: "#85BBF0",
+    component_db_border_color: "#78A8D8",
+    component_queue_bg_color: "#85BBF0",
+    component_queue_border_color: "#78A8D8",
+    external_component_bg_color: "#CCCCCC",
+    external_component_border_color: "#BFBFBF",
+    external_component_db_bg_color: "#CCCCCC",
+    external_component_db_border_color: "#BFBFBF",
+    external_component_queue_bg_color: "#CCCCCC",
+    external_component_queue_border_color: "#BFBFBF",
   },
   mindmap: {
     useMaxWidth: true,
@@ -1834,17 +1855,18 @@ const config: Partial<MermaidConfig> = {
 };
 
 if (config.class) config.class.arrowMarkerAbsolute = config.arrowMarkerAbsolute;
-if (config.gitGraph) config.gitGraph.arrowMarkerAbsolute = config.arrowMarkerAbsolute;
+if (config.gitGraph)
+  config.gitGraph.arrowMarkerAbsolute = config.arrowMarkerAbsolute;
 
-const keyify = (obj: any, prefix = ''): string[] =>
+const keyify = (obj: any, prefix = ""): string[] =>
   Object.keys(obj).reduce((res: string[], el): string[] => {
     if (Array.isArray(obj[el])) {
       return res;
-    } else if (typeof obj[el] === 'object' && obj[el] !== null) {
-      return [...res, prefix + el, ...keyify(obj[el], '')];
+    } else if (typeof obj[el] === "object" && obj[el] !== null) {
+      return [...res, prefix + el, ...keyify(obj[el], "")];
     }
     return [...res, prefix + el];
   }, []);
 
-export const configKeys: string[] = keyify(config, '');
+export const configKeys: string[] = keyify(config, "");
 export default config;

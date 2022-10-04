@@ -1,10 +1,11 @@
-'use strict';
+"use strict";
 /**
  * @function assignWithDepth Extends the functionality of {@link ObjectConstructor.assign} with the
  *   ability to merge arbitrary-depth objects For each key in src with path `k` (recursively)
  *   performs an Object.assign(dst[`k`], src[`k`]) with a slight change from the typical handling of
  *   undefined for dst[`k`]: instead of raising an error, dst[`k`] is auto-initialized to {} and
- *   effectively merged with src[`k`]<p> Additionally, dissimilar types will not clobber unless the
+ *   effectively merged with src[`k`]
+ *   Additionally, dissimilar types will not clobber unless the
  *   config.clobber parameter === true. Example:
  *
  *   ```js
@@ -26,7 +27,10 @@
  * @returns {any}
  */
 const assignWithDepth = function (dst, src, config) {
-  const { depth, clobber } = Object.assign({ depth: 2, clobber: false }, config);
+  const { depth, clobber } = Object.assign(
+    { depth: 2, clobber: false },
+    config
+  );
   if (Array.isArray(src) && !Array.isArray(dst)) {
     src.forEach((s) => assignWithDepth(dst, s, config));
     return dst;
@@ -38,24 +42,39 @@ const assignWithDepth = function (dst, src, config) {
     });
     return dst;
   }
-  if (typeof dst === 'undefined' || depth <= 0) {
-    if (dst !== undefined && dst !== null && typeof dst === 'object' && typeof src === 'object') {
+  if (typeof dst === "undefined" || depth <= 0) {
+    if (
+      dst !== undefined &&
+      dst !== null &&
+      typeof dst === "object" &&
+      typeof src === "object"
+    ) {
       return Object.assign(dst, src);
     } else {
       return src;
     }
   }
-  if (typeof src !== 'undefined' && typeof dst === 'object' && typeof src === 'object') {
+  if (
+    typeof src !== "undefined" &&
+    typeof dst === "object" &&
+    typeof src === "object"
+  ) {
     Object.keys(src).forEach((key) => {
       if (
-        typeof src[key] === 'object' &&
-        (dst[key] === undefined || typeof dst[key] === 'object')
+        typeof src[key] === "object" &&
+        (dst[key] === undefined || typeof dst[key] === "object")
       ) {
         if (dst[key] === undefined) {
           dst[key] = Array.isArray(src[key]) ? [] : {};
         }
-        dst[key] = assignWithDepth(dst[key], src[key], { depth: depth - 1, clobber });
-      } else if (clobber || (typeof dst[key] !== 'object' && typeof src[key] !== 'object')) {
+        dst[key] = assignWithDepth(dst[key], src[key], {
+          depth: depth - 1,
+          clobber,
+        });
+      } else if (
+        clobber ||
+        (typeof dst[key] !== "object" && typeof src[key] !== "object")
+      ) {
         dst[key] = src[key];
       }
     });

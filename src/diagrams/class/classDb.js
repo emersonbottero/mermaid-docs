@@ -1,18 +1,18 @@
-import { select } from 'd3';
-import { log } from '../../logger';
-import * as configApi from '../../config';
-import common from '../common/common';
-import utils from '../../utils';
-import mermaidAPI from '../../mermaidAPI';
+import { select } from "d3";
+import { log } from "../../logger";
+import * as configApi from "../../config";
+import common from "../common/common";
+import utils from "../../utils";
+import mermaidAPI from "../../mermaidAPI";
 import {
   setAccTitle,
   getAccTitle,
   getAccDescription,
   setAccDescription,
   clear as commonClear,
-} from '../../commonDb';
+} from "../../commonDb";
 
-const MERMAID_DOM_ID_PREFIX = 'classid-';
+const MERMAID_DOM_ID_PREFIX = "classid-";
 
 let relations = [];
 let classes = {};
@@ -27,11 +27,11 @@ export const parseDirective = function (statement, context, type) {
 };
 
 const splitClassNameAndType = function (id) {
-  let genericType = '';
+  let genericType = "";
   let className = id;
 
-  if (id.indexOf('~') > 0) {
-    let split = id.split('~');
+  if (id.indexOf("~") > 0) {
+    let split = id.split("~");
     className = split[0];
 
     genericType = common.sanitizeText(split[1], configApi.getConfig());
@@ -49,7 +49,7 @@ const splitClassNameAndType = function (id) {
 export const addClass = function (id) {
   let classId = splitClassNameAndType(id);
   // Only add class if not exists
-  if (typeof classes[classId.className] !== 'undefined') return;
+  if (typeof classes[classId.className] !== "undefined") return;
 
   classes[classId.className] = {
     id: classId.className,
@@ -58,7 +58,7 @@ export const addClass = function (id) {
     methods: [],
     members: [],
     annotations: [],
-    domId: MERMAID_DOM_ID_PREFIX + classId.className + '-' + classCounter,
+    domId: MERMAID_DOM_ID_PREFIX + classId.className + "-" + classCounter,
   };
 
   classCounter++;
@@ -99,7 +99,7 @@ export const getRelations = function () {
 };
 
 export const addRelation = function (relation) {
-  log.debug('Adding relation: ' + JSON.stringify(relation));
+  log.debug("Adding relation: " + JSON.stringify(relation));
   addClass(relation.id1);
   addClass(relation.id2);
 
@@ -136,7 +136,7 @@ export const addAnnotation = function (className, annotation) {
  * Adds a member to the specified class
  *
  * @param className The class name
- * @param member The full name of the member. If the member is enclosed in <<brackets>> it is
+ * @param member The full name of the member. If the member is enclosed in `brackets` it is
  *   treated as an annotation If the member is ending with a closing bracket ) it is treated as a
  *   method Otherwise the member will be treated as a normal property
  * @public
@@ -145,15 +145,17 @@ export const addMember = function (className, member) {
   const validatedClassName = splitClassNameAndType(className).className;
   const theClass = classes[validatedClassName];
 
-  if (typeof member === 'string') {
+  if (typeof member === "string") {
     // Member can contain white spaces, we trim them out
     const memberString = member.trim();
 
-    if (memberString.startsWith('<<') && memberString.endsWith('>>')) {
+    if (memberString.startsWith("<<") && memberString.endsWith(">>")) {
       // Remove leading and trailing brackets
       // theClass.annotations.push(memberString.substring(2, memberString.length - 2));
-      theClass.annotations.push(sanitizeText(memberString.substring(2, memberString.length - 2)));
-    } else if (memberString.indexOf(')') > 0) {
+      theClass.annotations.push(
+        sanitizeText(memberString.substring(2, memberString.length - 2))
+      );
+    } else if (memberString.indexOf(")") > 0) {
       theClass.methods.push(sanitizeText(memberString));
     } else if (memberString) {
       theClass.members.push(sanitizeText(memberString));
@@ -169,7 +171,7 @@ export const addMembers = function (className, members) {
 };
 
 export const cleanupLabel = function (label) {
-  if (label.substring(0, 1) === ':') {
+  if (label.substring(0, 1) === ":") {
     return common.sanitizeText(label.substr(1).trim(), configApi.getConfig());
   } else {
     return sanitizeText(label.trim());
@@ -183,10 +185,10 @@ export const cleanupLabel = function (label) {
  * @param className Class to add
  */
 export const setCssClass = function (ids, className) {
-  ids.split(',').forEach(function (_id) {
+  ids.split(",").forEach(function (_id) {
     let id = _id;
     if (_id[0].match(/\d/)) id = MERMAID_DOM_ID_PREFIX + id;
-    if (typeof classes[id] !== 'undefined') {
+    if (typeof classes[id] !== "undefined") {
       classes[id].cssClasses.push(className);
     }
   });
@@ -200,8 +202,8 @@ export const setCssClass = function (ids, className) {
  */
 const setTooltip = function (ids, tooltip) {
   const config = configApi.getConfig();
-  ids.split(',').forEach(function (id) {
-    if (typeof tooltip !== 'undefined') {
+  ids.split(",").forEach(function (id) {
+    if (typeof tooltip !== "undefined") {
       classes[id].tooltip = common.sanitizeText(tooltip, config);
     }
   });
@@ -218,21 +220,21 @@ export const getTooltip = function (id) {
  */
 export const setLink = function (ids, linkStr, target) {
   const config = configApi.getConfig();
-  ids.split(',').forEach(function (_id) {
+  ids.split(",").forEach(function (_id) {
     let id = _id;
     if (_id[0].match(/\d/)) id = MERMAID_DOM_ID_PREFIX + id;
-    if (typeof classes[id] !== 'undefined') {
+    if (typeof classes[id] !== "undefined") {
       classes[id].link = utils.formatUrl(linkStr, config);
-      if (config.securityLevel === 'sandbox') {
-        classes[id].linkTarget = '_top';
-      } else if (typeof target === 'string') {
+      if (config.securityLevel === "sandbox") {
+        classes[id].linkTarget = "_top";
+      } else if (typeof target === "string") {
         classes[id].linkTarget = sanitizeText(target);
       } else {
-        classes[id].linkTarget = '_blank';
+        classes[id].linkTarget = "_blank";
       }
     }
   });
-  setCssClass(ids, 'clickable');
+  setCssClass(ids, "clickable");
 };
 
 /**
@@ -243,11 +245,11 @@ export const setLink = function (ids, linkStr, target) {
  * @param functionArgs Function args the function should be called with
  */
 export const setClickEvent = function (ids, functionName, functionArgs) {
-  ids.split(',').forEach(function (id) {
+  ids.split(",").forEach(function (id) {
     setClickFunc(id, functionName, functionArgs);
     classes[id].haveCallback = true;
   });
-  setCssClass(ids, 'clickable');
+  setCssClass(ids, "clickable");
 };
 
 const setClickFunc = function (domId, functionName, functionArgs) {
@@ -255,15 +257,15 @@ const setClickFunc = function (domId, functionName, functionArgs) {
   let id = domId;
   let elemId = lookUpDomId(id);
 
-  if (config.securityLevel !== 'loose') {
+  if (config.securityLevel !== "loose") {
     return;
   }
-  if (typeof functionName === 'undefined') {
+  if (typeof functionName === "undefined") {
     return;
   }
-  if (typeof classes[id] !== 'undefined') {
+  if (typeof classes[id] !== "undefined") {
     let argList = [];
-    if (typeof functionArgs === 'string') {
+    if (typeof functionArgs === "string") {
       /* Splits functionArgs by ',', ignoring all ',' in double quoted strings */
       argList = functionArgs.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
       for (let i = 0; i < argList.length; i++) {
@@ -286,7 +288,7 @@ const setClickFunc = function (domId, functionName, functionArgs) {
       const elem = document.querySelector(`[id="${elemId}"]`);
       if (elem !== null) {
         elem.addEventListener(
-          'click',
+          "click",
           function () {
             utils.runFunc(functionName, ...argList);
           },
@@ -317,41 +319,50 @@ export const relationType = {
 };
 
 const setupToolTips = function (element) {
-  let tooltipElem = select('.mermaidTooltip');
+  let tooltipElem = select(".mermaidTooltip");
   if ((tooltipElem._groups || tooltipElem)[0][0] === null) {
-    tooltipElem = select('body').append('div').attr('class', 'mermaidTooltip').style('opacity', 0);
+    tooltipElem = select("body")
+      .append("div")
+      .attr("class", "mermaidTooltip")
+      .style("opacity", 0);
   }
 
-  const svg = select(element).select('svg');
+  const svg = select(element).select("svg");
 
-  const nodes = svg.selectAll('g.node');
+  const nodes = svg.selectAll("g.node");
   nodes
-    .on('mouseover', function () {
+    .on("mouseover", function () {
       const el = select(this);
-      const title = el.attr('title');
+      const title = el.attr("title");
       // Dont try to draw a tooltip if no data is provided
       if (title === null) {
         return;
       }
       const rect = this.getBoundingClientRect();
 
-      tooltipElem.transition().duration(200).style('opacity', '.9');
+      tooltipElem.transition().duration(200).style("opacity", ".9");
       tooltipElem
-        .text(el.attr('title'))
-        .style('left', window.scrollX + rect.left + (rect.right - rect.left) / 2 + 'px')
-        .style('top', window.scrollY + rect.top - 14 + document.body.scrollTop + 'px');
-      tooltipElem.html(tooltipElem.html().replace(/&lt;br\/&gt;/g, '<br/>'));
-      el.classed('hover', true);
+        .text(el.attr("title"))
+        .style(
+          "left",
+          window.scrollX + rect.left + (rect.right - rect.left) / 2 + "px"
+        )
+        .style(
+          "top",
+          window.scrollY + rect.top - 14 + document.body.scrollTop + "px"
+        );
+      tooltipElem.html(tooltipElem.html().replace(/&lt;br\/&gt;/g, "<br/>"));
+      el.classed("hover", true);
     })
-    .on('mouseout', function () {
-      tooltipElem.transition().duration(500).style('opacity', 0);
+    .on("mouseout", function () {
+      tooltipElem.transition().duration(500).style("opacity", 0);
       const el = select(this);
-      el.classed('hover', false);
+      el.classed("hover", false);
     });
 };
 funs.push(setupToolTips);
 
-let direction = 'TB';
+let direction = "TB";
 const getDirection = () => direction;
 const setDirection = (dir) => {
   direction = dir;
