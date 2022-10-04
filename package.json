@@ -6,7 +6,7 @@
   "author": "Emerson Bottero <emersonbottero@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "docs:code": "typedoc --plugin typedoc-plugin-markdown --out docs/code src/config.ts",
+    "docs:code": "typedoc --plugin typedoc-plugin-markdown --out docs/code --entryPointStrategy expand src",
     "predocs:dev": "yarn docs:code",
     "docs:dev": "vitepress dev docs",
     "predocs:build": "yarn docs:code",
