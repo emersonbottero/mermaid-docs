@@ -5,6 +5,7 @@
   "repository": "https://github.com/emersonbottero/mermaid-docs.git",
   "author": "Emerson Bottero <emersonbottero@gmail.com>",
   "license": "MIT",
+  "packageManager": "pnpm@7.13.2",
   "scripts": {
     "docs:code": "typedoc --plugin typedoc-plugin-markdown --readme none --hideBreadcrumbs --hideInPageTOC --namedAnchors --out docs/config/setup --entryPointStrategy expand src/defaultConfig.ts src/config.ts src/mermaidAPI.ts",
     "predocs:dev": "pnpm docs:code",
