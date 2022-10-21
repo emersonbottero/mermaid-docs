@@ -108,9 +108,9 @@ You can create your own themes, by changing any of the given variables below. If
 
 ## Theme Variables Reference Table
 
-::: tip
+```note
 Variables that are unique to some diagrams can be affected by changes in Theme Variables
-:::
+```
 
 | Variable             | Default/Base/Factor value      | Calc | Description                                                                                                                      |
 | -------------------- | ------------------------------ | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -255,25 +255,7 @@ In the following examples, the directive `init` is used, with the `theme` being 
 
 ### Flowchart
 
-```mmd
-%%{init: {'securityLevel': 'loose', 'theme':'base'}}%%
-        graph TD
-          A[Christmas] -->|Get money| B(Go shopping)
-          B --> C{Let me think}
-          B --> G[/Another/]
-          C ==>|One| D[Laptop]
-          C -->|Two| E[iPhone]
-          C -->|Three| F[fa:fa-car Car]
-          subgraph section
-            C
-            D
-            E
-            F
-            G
-          end
-```
-
-```mermaid
+```mermaid-example
 %%{init: {'securityLevel': 'loose', 'theme':'base'}}%%
         graph TD
           A[Christmas] -->|Get money| B(Go shopping)

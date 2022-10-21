@@ -39,7 +39,7 @@ It is a relatively straightforward solution to a significant hurdle with the sof
 
 **Nodes**
 
-> These are the boxes that contain text or otherwise discrete pieces of each diagram, separated generally by arrows, except for Gantt Charts and User Journey Diagrams. They will be referred often in the instructions. Read for Diagram Specific [Syntax](../config/n00b-syntaxReference)
+> These are the boxes that contain text or otherwise discrete pieces of each diagram, separated generally by arrows, except for Gantt Charts and User Journey Diagrams. They will be referred often in the instructions. Read for Diagram Specific [Syntax](../intro/n00b-syntaxReference)
 
 ## Advantages of using Mermaid
 
@@ -63,6 +63,6 @@ In fact one can pick up the syntax for it quite easily from the examples given a
 
 ## Mermaid is for everyone.
 
-Video [Tutorials](../config/Tutorials) are also available for the mermaid [live editor](https://mermaid.live/).
+Video [Tutorials](https://mermaid-js.github.io/mermaid/#/../config/Tutorials) are also available for the mermaid [live editor](https://mermaid.live/).
 
-Alternatively you can use Mermaid [Plug-Ins](../misc/integrations), with tools you already use, like Google Docs.
+Alternatively you can use Mermaid [Plug-Ins](https://mermaid-js.github.io/mermaid/#/./integrations), with tools you already use, like Google Docs.

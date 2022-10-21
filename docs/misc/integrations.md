@@ -17,6 +17,7 @@ They also serve as proof of concept, for the variety of things that can be built
 - [Joplin](https://joplinapp.org) (**Native support**)
 - [Notion](https://notion.so) (**Native support**)
 - [Observable](https://observablehq.com/@observablehq/mermaid) (**Native support**)
+- [Obsidian](https://help.obsidian.md/How+to/Format+your+notes#Diagram) (**Native support**)
 - [GitBook](https://gitbook.com)
   - [Mermaid Plugin](https://github.com/JozoVilcek/gitbook-plugin-mermaid)
   - [Markdown with Mermaid CLI](https://github.com/miao1007/gitbook-plugin-mermaid-cli)
@@ -30,7 +31,7 @@ They also serve as proof of concept, for the variety of things that can be built
   - [Mermaid Macro](https://www.redmine.org/plugins/redmine_mermaid_macro)
   - [redmine-mermaid](https://github.com/styz/redmine_mermaid)
   - [markdown-for-mermaid-plugin](https://github.com/jamieh-mongolian/markdown-for-mermaid-plugin)
-- [Jetsbrain IDE eg Pycharm](https://www.jetbrains.com/go/guide/tips/mermaid-js-support-in-markdown/)
+- [JetBrains IDE eg Pycharm](https://www.jetbrains.com/go/guide/tips/mermaid-js-support-in-markdown/)
 - [mermerd](https://github.com/KarnerTh/mermerd)
 
 ## CRM/ERP/Similar

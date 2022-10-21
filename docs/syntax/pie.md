@@ -5,14 +5,7 @@
 
 Mermaid can render Pie Chart diagrams.
 
-```mmd
-pie title Pets adopted by volunteers
-    "Dogs" : 386
-    "Cats" : 85
-    "Rats" : 15
-```
-
-```mermaid
+```mermaid-example
 pie title Pets adopted by volunteers
     "Dogs" : 386
     "Cats" : 85

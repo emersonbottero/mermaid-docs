@@ -2,7 +2,7 @@
 
 Mermaid is composed of three parts: Deployment, Syntax and Configuration.
 
-This section talks about the different ways to deploy Mermaid. Learning the [Syntax](./n00b-syntaxReference.md) would be of great help to the beginner.
+This section talks about the different ways to deploy Mermaid. Learning the [Syntax](n00b-syntaxReference.md) would be of great help to the beginner.
 
 > Generally the live editor is enough for most general uses of mermaid, and is a good place to start learning.
 
@@ -17,7 +17,7 @@ This section talks about the different ways to deploy Mermaid. Learning the [Syn
 
 **Note: It is our recommendation that you review all approaches, and choose the one that is best for your project.**
 
-> More in depth information can be found at [Usage](../config/usage).
+> More in depth information can be found at [Usage](../config/usage.md).
 
 ## 1. Using the Live Editor
 
@@ -36,7 +36,7 @@ graph TD
 
 In the `Code` section one can write or edit raw mermaid code, and instantly `Preview` the rendered result on the panel beside it.
 
-The `Configuration` Section is for changing the appearance and behavior of mermaid diagrams. An easy introduction to mermaid configuration is found in the [Advanced usage](../config/n00b-advanced) section. A complete configuration reference cataloging the default values can be found on the [mermaidAPI](../config/Setup) page.
+The `Configuration` Section is for changing the appearance and behavior of mermaid diagrams. An easy introduction to mermaid configuration is found in the [Advanced usage](../config/n00b-advanced.md) section. A complete configuration reference cataloging the default values can be found on the [mermaidAPI](../config/setup/README) page.
 
 ![Code,Config and Preview](./img/Code-Preview-Config.png)
 
@@ -68,9 +68,9 @@ and to View, https://mermaid.live/view?gist=https://gist.github.com/sidharthv96/
 
 ## 2. Using Mermaid Plugins:
 
-You can generate mermaid diagrams from within popular applications using plug-ins. It can be done in the same way, you would use the Live Editor. Here's a list of [Mermaid Plugins](../misc/integrations).
+You can generate mermaid diagrams from within popular applications using plug-ins. It can be done in the same way, you would use the Live Editor. Here's a list of [Mermaid Plugins](../misc/integrations.md).
 
-**This is covered in greater detail in the [Usage section](../config/usage)**
+**This is covered in greater detail in the [Usage section](../config/usage.md)**
 
 ## 3. Calling the JavaScript API
 
@@ -82,23 +82,13 @@ The API works by pulling rendering instructions from the source `mermaid.js` in 
 
 ### Requirements for the Mermaid API.
 
-When writing the .html file, we give three instructions inside the html code to the web browser:
+When writing the .html file, we give two instructions inside the html code to the web browser:
 
-a. A reference for fetching the online mermaid renderer, through the `mermaid.js` or `mermaid.min.js`.
+a. The mermaid code for the diagram we want to create.
 
-b. The mermaid code for the diagram we want to create.
+b. The importing of mermaid library through the `mermaid.esm.js` or `mermaid.esm.min.mjs` and the `mermaid.initialize()` call, which dictates the appearance of diagrams and also starts the rendering process .
 
-c. The `mermaid.initialize()` call, which dictates the appearance of diagrams and also starts the rendering process .
-
-**a. A reference to the external CDN in a `<script src>` tag, or a reference to mermaid.js as a separate file.:**
-
-```html
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-</body>
-```
-
-**b. The embedded mermaid diagram definition inside a `<pre class="mermaid">`:**
+**a. The embedded mermaid diagram definition inside a `<pre class="mermaid">`:**
 
 ```html
 <body>
@@ -114,13 +104,14 @@ c. The `mermaid.initialize()` call, which dictates the appearance of diagrams an
 
 **Notes**: Every Mermaid chart/graph/diagram definition, should have separate `<pre>` tags.
 
-**c. The `mermaid.initialize()` call.**
+**b. The import of mermaid and the `mermaid.initialize()` call.**
 
 `mermaid.initialize()` call takes all the definitions contained in all the `<pre class="mermaid">` tags that it finds in the html body and renders them into diagrams. Example:
 
 ```html
 <body>
-  <script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@<MERMAID_VERSION>/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true });
   </script>
 </body>
@@ -142,11 +133,6 @@ Rendering in Mermaid is initialized by `mermaid.initialize()` call. You can plac
 ```html
 <html>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-      mermaid.initialize({ startOnLoad: true });
-    </script>
-
     Here is one mermaid diagram:
     <pre class="mermaid">
             graph TD 
@@ -163,6 +149,11 @@ Rendering in Mermaid is initialized by `mermaid.initialize()` call. You can plac
             B -->|tcp_456| C[Server1] 
             B -->|tcp_456| D[Server2]
     </pre>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@<MERMAID_VERSION>/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
   </body>
 </html>
 ```
@@ -188,8 +179,8 @@ In this example mermaid.js is referenced in `src` as a separate JavaScript file,
             B --> C[Server1] 
             B --> D[Server2]
     </pre>
-    <script src="The\Path\In\Your\Package\mermaid.js"></script>
-    <script>
+    <script type="module">
+      import mermaid from 'The/Path/In/Your/Package/mermaid.esm.mjs';
       mermaid.initialize({ startOnLoad: true });
     </script>
   </body>
@@ -213,4 +204,4 @@ In this example mermaid.js is referenced in `src` as a separate JavaScript file,
 
 **Comments from Knut Sveidqvist, creator of mermaid:**
 
-- In early versions of mermaid, the `<script src>` tag was invoked in the `<head>` part of the web page. Nowadays we can place it in the `<body>` as seen above. Older parts of the documentation frequently reflects the previous way which still works.
+- In early versions of mermaid, the `<script>` tag was invoked in the `<head>` part of the web page. Nowadays we can place it in the `<body>` as seen above. Older parts of the documentation frequently reflects the previous way which still works.

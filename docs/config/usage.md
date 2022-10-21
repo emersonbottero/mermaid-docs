@@ -12,7 +12,7 @@ Please note that you can switch versions through the dropdown box at the top rig
 
 ## Using mermaid
 
-For the majority of users, Using the [Live Editor](https://mermaid.live/) would be sufficient, however you may also opt to deploy mermaid as a dependency or using the [Mermaid API](./Setup.md).
+For the majority of users, Using the [Live Editor](https://mermaid.live/) would be sufficient, however you may also opt to deploy mermaid as a dependency or using the [Mermaid API](setup/README).
 
 We have compiled some Video [Tutorials](./Tutorials.md) on how to use the mermaid Live Editor.
 
@@ -37,25 +37,11 @@ We have compiled some Video [Tutorials](./Tutorials.md) on how to use the mermai
 
 **Hosting mermaid on a web page.**
 
-> Note:This topic explored in greater depth in the [User Guide for Beginners](../intro/n00b-gettingStarted.md)
+> Note:This topic explored in greater depth in the [User Guide for Beginners](../intro/n00b-gettingStarted)
 
-The easiest way to integrate mermaid on a web page requires three elements:
+The easiest way to integrate mermaid on a web page requires two elements:
 
-1.  Inclusion of the mermaid address in the html page using a `script` tag, in the `src` section.Example:
-
-    ```html
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    ```
-
-2.  The `mermaidAPI` call, in a separate `script` tag. Example:
-
-    ```html
-    <script>
-      mermaid.initialize({ startOnLoad: true });
-    </script>
-    ```
-
-3.  A graph definition, inside `<div>` tags labeled `class=mermaid`. Example:
+- A graph definition, inside `<pre>` tags labeled `class=mermaid`. Example:
 
 ```html
 <pre class="mermaid">
@@ -66,8 +52,18 @@ The easiest way to integrate mermaid on a web page requires three elements:
 </pre>
 ```
 
-**Following these directions, mermaid starts at page load and (when the page has loaded) it will
-locate the graph definitions inside the `div` tags with `class="mermaid"` and return diagrams in SVG form, following given definitions.**
+- Inclusion of the mermaid address in the html page body using a `script` tag as an ESM import, and the `mermaidAPI` call.
+
+Example:
+
+```html
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@<MERMAID_VERSION>/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+```
+
+**Following these directions, mermaid starts at page load and (when the page has loaded) it will locate the graph definitions inside the `pre` tags with `class="mermaid"` and return diagrams in SVG form, following given definitions.**
 
 ## Simple full example:
 
@@ -84,8 +80,8 @@ locate the graph definitions inside the `div` tags with `class="mermaid"` and re
       B-->C[fa:fa-ban forbidden]
       B-->D(fa:fa-spinner);
     </pre>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@<MERMAID_VERSION>/dist/mermaid.esm.min.mjs';
       mermaid.initialize({ startOnLoad: true });
     </script>
   </body>
@@ -119,10 +115,10 @@ Values:
 - **antiscript**: html tags in text are allowed, (only script element is removed), click functionality is enabled
 - **sandbox**: With this security level all rendering takes place in a sandboxed iframe. This prevent any JavaScript running in the context. This may hinder interactive functionality of the diagram like scripts, popups in sequence diagram or links to other tabs/targets etc.
 
-::: warning
+```note
 This changes the default behaviour of mermaid so that after upgrade to 8.2, unless the `securityLevel` is not changed, tags in flowcharts are encoded as tags and clicking is disabled.
 **sandbox** security level is still in the beta version.
-:::
+```
 
 **If you are taking responsibility for the diagram source security you can set the `securityLevel` to a value of your choosing . This allows clicks and tags are allowed.**
 
@@ -187,9 +183,9 @@ Or with no config object, and a jQuery selection:
 mermaid.init(undefined, $('#someId .yetAnotherClass'));
 ```
 
-::: warning
+```warning
 This type of integration is deprecated. Instead the preferred way of handling more complex integration is to use the mermaidAPI instead.
-:::
+```
 
 ## Usage with webpack
 
@@ -204,18 +200,17 @@ fetch the graph definition from the site (perhaps from a textarea), render it an
 The example below show an outline of how this could be used. The example just logs the resulting SVG to the JavaScript console.
 
 ```html
-<script src="mermaid.js"></script>
-
-<script>
+<script type="module">
+  import mermaid from './mermaid.mjs';
   mermaid.mermaidAPI.initialize({ startOnLoad: false });
-  $(function () {
+  $(async function () {
     // Example of using the API var
     element = document.querySelector('#graphDiv');
-    var insertSvg = function (svgCode, bindFunctions) {
+    const insertSvg = function (svgCode, bindFunctions) {
       element.innerHTML = svgCode;
     };
-    var graphDefinition = 'graph TB\na-->b';
-    var graph = mermaid.mermaidAPI.render('graphDiv', graphDefinition, insertSvg);
+    const graphDefinition = 'graph TB\na-->b';
+    const graph = await mermaid.mermaidAPI.render('graphDiv', graphDefinition, insertSvg);
   });
 </script>
 ```
@@ -329,7 +324,7 @@ setting the options in mermaid.
 4. Instantiation of the configuration using the **mermaid.init** call- **Deprecated**
 
 The list above has two ways too many of doing this. Three are deprecated and will eventually be removed. The list of
-configuration objects are described [in the mermaidAPI documentation](Setup.md).
+configuration objects are described [in the mermaidAPI documentation](setup/README).
 
 ## Using the `mermaidAPI.initialize`/`mermaid.initialize` call
 
@@ -339,14 +334,14 @@ on what kind of integration you use.
 ```html
 <script src="../dist/mermaid.js"></script>
 <script>
-  var config = { startOnLoad: true, flowchart: { useMaxWidth: false, htmlLabels: true } };
+  let config = { startOnLoad: true, flowchart: { useMaxWidth: false, htmlLabels: true } };
   mermaid.initialize(config);
 </script>
 ```
 
-::: tip
+```note
 This is the preferred way of configuring mermaid.
-:::
+```
 
 ### The following methods are deprecated and are kept only for backwards compatibility.
 
@@ -362,9 +357,9 @@ approach are:
 mermaid.startOnLoad = true;
 ```
 
-::: warning
+```warning
 This way of setting the configuration is deprecated. Instead the preferred way is to use the initialize method. This functionality is only kept for backwards compatibility.
-:::
+```
 
 ## Using the mermaid_config
 
@@ -378,9 +373,9 @@ approach are:
 mermaid_config.startOnLoad = true;
 ```
 
-::: warning
+```warning
 This way of setting the configuration is deprecated. Instead the preferred way is to use the initialize method. This functionality is only kept for backwards compatibility.
-:::
+```
 
 ## Using the mermaid.init call
 
@@ -393,6 +388,6 @@ To set some configuration via the mermaid object. The two parameters that are su
 mermaid_config.startOnLoad = true;
 ```
 
-::: warning
+```warning
 This way of setting the configuration is deprecated. Instead the preferred way is to use the initialize method. This functionality is only kept for backwards compatibility.
-:::
+```

@@ -6,10 +6,10 @@
   "author": "Emerson Bottero <emersonbottero@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "docs:code": "typedoc --plugin typedoc-plugin-markdown --out docs/code --entryPointStrategy expand src",
-    "predocs:dev": "yarn docs:code",
+    "docs:code": "typedoc --plugin typedoc-plugin-markdown --readme none --hideBreadcrumbs --hideInPageTOC --namedAnchors --out docs/config/setup --entryPointStrategy expand src/defaultConfig.ts src/config.ts src/mermaidAPI.ts",
+    "predocs:dev": "pnpm docs:code",
     "docs:dev": "vitepress dev docs",
-    "predocs:build": "yarn docs:code",
+    "predocs:build": "pnpm docs:code",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
@@ -28,6 +28,8 @@
     "d3": "^7.6.1",
     "dompurify": "^2.4.0",
     "markdown-it": "^13.0.1",
+    "moment-mini": "^2.29.4",
+    "shiki": "^0.11.1",
     "stylis": "^4.1.2",
     "typedoc": "^0.23.15",
     "vite": "^3.1.4",
