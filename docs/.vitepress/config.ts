@@ -18,6 +18,7 @@ export default defineConfig({
   description: "Create diagrams and visualizations using text and code.",
   base: "/mermaid-docs/",
   markdown: allMarkdownTransformers,
+  ignoreDeadLinks: true,
   head: [
     [
       "link",
