@@ -17,7 +17,7 @@ specifiers:
   vite: ^3.1.4
   vitepress: ^1.0.0-alpha.19
   vitepress-plugin-mermaid: ^2.0.8
-  vitepress-plugin-search: ^1.0.4-alpha.11
+  vitepress-plugin-search: ^1.0.4-alpha.15
   vitest: ^0.23.4
 
 dependencies:
@@ -26,7 +26,7 @@ dependencies:
   typescript: 4.8.4
   vitepress: 1.0.0-alpha.21_tbpndr44ulefs3hehwpi2mkf2y
   vitepress-plugin-mermaid: 2.0.8_orex2agllvbrjwlm6w3vfszwae
-  vitepress-plugin-search: 1.0.4-alpha.11_tqws5p4jgpq4wpgjfurcwjcpmm
+  vitepress-plugin-search: 1.0.4-alpha.15_r43bfces2ymg32jb7xrktozvbm
 
 devDependencies:
   '@types/d3': 7.4.0
@@ -259,7 +259,7 @@ packages:
   /@types/concat-stream/1.6.1:
     resolution: {integrity: sha512-eHE4cQPoj6ngxBZMvVf6Hw7Mh4jMW4U9lpGmS5GBPB9RYxlFg+CHaVN7ErNY4W9XfLIEn20b4VDYaIrbq0q4uA==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.11.3
 
   /@types/d3-array/3.0.3:
     resolution: {integrity: sha512-Reoy+pKnvsksN0lQUlcH6dOGjRZ/3WRwXR//m+/8lt1BXeI4xyaUZoqULNjyXXRuh0Mj4LNpkCvhUpQlY3X5xQ==}
@@ -446,14 +446,33 @@ packages:
       '@types/trusted-types': 2.0.2
     dev: true
 
+  /@types/flexsearch/0.7.3:
+    resolution: {integrity: sha512-HXwADeHEP4exXkCIwy2n1+i0f1ilP1ETQOH5KDOugjkTFZPntWo0Gr8stZOaebkxsdx+k0X/K6obU/+it07ocg==}
+    dev: false
+
   /@types/form-data/0.0.33:
     resolution: {integrity: sha512-8BSvG1kGm83cyJITQMZSulnl6QV8jqAGreJsc5tPu1Jq0vTSOiY/k24Wx82JRpWwZSqrala6sd5rWi6aNXvqcw==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.11.3
 
   /@types/geojson/7946.0.10:
     resolution: {integrity: sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==}
     dev: true
+
+  /@types/linkify-it/3.0.2:
+    resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: false
+
+  /@types/markdown-it/12.2.3:
+    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
+    dependencies:
+      '@types/linkify-it': 3.0.2
+      '@types/mdurl': 1.0.2
+    dev: false
+
+  /@types/mdurl/1.0.2:
+    resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
+    dev: false
 
   /@types/node/10.17.60:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
@@ -1484,6 +1503,10 @@ packages:
       is-extendable: 0.1.1
     dev: false
 
+  /flexsearch/0.7.31:
+    resolution: {integrity: sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==}
+    dev: false
+
   /form-data/2.5.1:
     resolution: {integrity: sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==}
     engines: {node: '>= 0.12'}
@@ -2102,14 +2125,19 @@ packages:
       vitepress: 1.0.0-alpha.21_tbpndr44ulefs3hehwpi2mkf2y
     dev: false
 
-  /vitepress-plugin-search/1.0.4-alpha.11_tqws5p4jgpq4wpgjfurcwjcpmm:
-    resolution: {integrity: sha512-fKJIpPj6QGQeXda31Dx5f9DtCYnPVHKQVsOUpnJOzahWHPPgGofslwwvwaeRMWIGvpslxi/m4RVK6C+ydqKukA==}
+  /vitepress-plugin-search/1.0.4-alpha.15_r43bfces2ymg32jb7xrktozvbm:
+    resolution: {integrity: sha512-Ef/VkhTVYlECVI0H9Ck6745UNPfYFppAqnlxVSMJXdxP2vjOZ5TYNczlTTQ2p9dh16MFw/IurbL1/GrG4nXdNw==}
     engines: {node: ^14.13.1 || ^16.7.0 || >=18}
     peerDependencies:
+      flexsearch: ^0.7.31
       vite: 2 || 3
       vitepress: ^1.0.0-alpha.13
       vue: '3'
     dependencies:
+      '@types/flexsearch': 0.7.3
+      '@types/markdown-it': 12.2.3
+      flexsearch: 0.7.31
+      markdown-it: 13.0.1
       vite: 3.1.8
       vitepress: 1.0.0-alpha.21_tbpndr44ulefs3hehwpi2mkf2y
       vue: 3.2.41
